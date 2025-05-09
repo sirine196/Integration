@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha GreenCity</title>
+    <link rel="stylesheet" href="interface.css">
+    <link rel="stylesheet" href="user.css">
+    <script src="captcha.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="../../Ressources/logo_GreenCity_trans.png" width="20%" alt="Logo GreenCity" id="logo_header">
+        <a href="user.php" class="profile-link">
+            <img src="../../Ressources/profile.png" alt="Profile Icon" class="profile-icon">
+            Profile
+        </a>
+    </header>
+
+    <main class="profile">
+        <div class="profile-highlight">
+            <center>
+                <h3>Pour continuer, veuillez cliquer dans l'ordre :</h3>
+                <div id="steps"></div>
+            </center>
+
+            <img id="img_captcha" alt="captcha" usemap="#map_captcha">
+            <map name="map_captcha" id="map_captcha">
+            </map>
+        </div>
+    </main> 
+</body>
+</html>

@@ -1,0 +1,471 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f1eb;
+}
+
+header {
+    background-color: #123A2D;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+
+
+nav{
+    display: inline-block;
+    width: 70%;
+    position: absolute;
+    margin-top: 3%;
+
+}
+
+nav a {
+    font-size: 24px;
+    padding: 2%;
+    color: #fff5e4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    border-radius: 10%;
+}
+
+nav a:hover {
+    background-color: white;
+    color: #123A2D;
+}
+
+.hero {
+    background: url('../../Ressources/logo_GreenCity-bg.png') no-repeat center center fixed;
+    background-size: cover;
+    color: #f4f1eb;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-overlay {
+    background: rgba(42, 38, 30, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.hero-content h2 {
+    font-size: 48px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin: 20px 0;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.cta-button {
+    background-color: #123A2D; 
+    color: #ffffff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.cta-button:hover {
+    background-color: white; 
+    color: #123A2D;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.featured-events {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #123A2D;
+    color: #2a2620;
+    position: relative;
+    overflow: hidden;
+}
+
+.featured-events::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 1;
+}
+
+.featured-events h2 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    position: relative;
+    font-weight: bold;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.event-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+.event-card {
+    position: relative;
+    width: 30%;
+    background-color: rgba(42, 38, 30, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    z-index: 2;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-image {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.event-title {
+    font-size: 24px;
+    color: #b5ffc1; /* Light color for contrast */
+    padding: 15px;
+    font-weight: bold;
+}
+
+.event-description {
+    font-size: 16px;
+    color: #f4f1eb;
+    padding: 0 15px 15px;
+    font-style: italic;
+}
+
+.learn-more {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #123A2D;
+    padding: 12px 28px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #b5ffc1;
+    transform: scale(1.05);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-card {
+        width: 45%; /* Two cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        width: 100%; /* Single card per row on very small screens */
+    }
+}
+
+/* Most Booked Event Section */
+.most-booked-event {
+    padding: 80px 20px;
+    background: url('../../Ressources/plant.jpg') no-repeat center center / cover;
+    background-attachment: fixed;
+    text-align: center;
+    position: relative;
+    color: #f4f1eb;
+    overflow: hidden;
+}
+
+.most-booked-event::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px); /* Adding blur effect */
+    z-index: 1;
+}
+
+.most-booked-event h2 {
+    font-size: 36px;
+    color: #b5ffc1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    z-index: 2;
+    position: relative;
+    font-weight: bold;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.event-highlight {
+    padding: 30px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 15px;
+    background-color: rgba(61, 55, 39, 0.7);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    position: relative;
+    z-index: 2;
+    animation: slideIn 1.5s ease-out;
+}
+
+.event-highlight:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    filter: brightness(1.1);
+}
+
+.event-highlight h3 {
+    font-size: 28px;
+    color: #b5ffc1;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.event-highlight p {
+    font-size: 18px;
+    color: #f4f1eb;
+    margin-bottom: 20px;
+}
+
+.learn-more {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-color: #123A2D;
+    padding: 12px 28px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.learn-more:hover {
+    background-color: #b5ffc1;
+    transform: scale(1.05);
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.complaint-section {
+    padding: 80px 20px;
+    background: url('../../Ressources/plant.jpg') no-repeat center center / cover; /* Same background as the most booked event */
+    background-attachment: fixed;
+    color: #f4f1eb; /* Light text for contrast */
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.complaint-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    backdrop-filter: blur(2px); /* Blur effect on background */
+    z-index: -1;
+}
+
+.complaint-section h2 {
+    font-size: 36px;
+    color: #b5ffc1; /* Warm golden color for heading */
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.complaint-container {
+    background-color: rgba(42, 38, 30, 0.7); /* Dark semi-transparent background for form */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.complaint-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.complaint-form label {
+    font-size: 18px;
+    color: #fff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.complaint-form input, .complaint-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+}
+
+.complaint-form input[type="text"], .complaint-form input[type="email"], .complaint-form textarea {
+    background-color: #fff;
+    color: #2a2620;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-form textarea {
+    resize: vertical;
+}
+
+.complaint-submit {
+    background-color: #123A2D; /* Warm golden color */
+    color: white;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: fit-content;
+    margin: 20px auto 0;
+}
+
+.complaint-submit:hover {
+    background-color: #123A2D ; /* Lighter golden color on hover */
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #123A2D;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+/* Profile Link */
+.profile-link {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    color: #b5ffc1; /* Warm, light color to match your theme */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 3; /* Ensures it appears above other elements */
+    transition: color 0.3s ease;
+}
+
+.profile-link:hover {
+    color: white; /* Darker color when hovered */
+}
+
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%; /* Makes the icon round */
+    transition: transform 0.3s ease;
+}
+
+.profile-link:hover .profile-icon {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+/* Ensuring the profile link is visible above everything else */
+body {
+    position: relative;
+}
