@@ -24,7 +24,7 @@ class ForumTopic {
         $query = "SELECT t.*, CONCAT(u.Nom, ' ', u.Prenom) AS client_name 
                   FROM topics t 
                   LEFT JOIN user u ON CAST(t.id_client AS UNSIGNED) = u.Id 
-                  WHERE t.status = 'Confirmé' OR t.status = 'En Attente' 
+                  WHERE t.status = 'Confirmé'
                   ORDER BY t.is_pinned DESC, t.created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
