@@ -7,6 +7,7 @@ require "../../config_db.php";
 $IdCurrentUser = $_SESSION['IdCurrentUser'] ?? null;
 $userInfo = null;
 
+
 if (isset($IdCurrentUser)) {
     try {
         $userInfo = $conn
