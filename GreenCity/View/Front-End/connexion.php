@@ -2,47 +2,53 @@
 session_start();
 require "../../config_db.php";
 
+$database = new Database();
+$conn = $database->getConnection();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['connexion'])) {
-
         if (!isset($_POST['mail'], $_POST['mdp'])) {
-            die("Tous les champs sont requis.");
-        }
+            echo "<script>alert('Tous les champs sont requis.');</script>";
+        } else {
+            $mail = trim($_POST['mail']);
+            $mdp = trim($_POST['mdp']);
 
-        $mail = trim($_POST['mail']);
-        $mdp = trim($_POST['mdp']);
+            $sql = "SELECT Id, Nom, Prenom, Mail, Mdp, Status FROM user WHERE Mail = :mail";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':mail', $mail, PDO::PARAM_STR);
+            $stmt->execute();
 
-        $sql = "SELECT Id, Mail, Mdp, Status FROM user WHERE Mail = '$mail'";
-        $result = $conn->query($sql);
-
-        if ($result && $result->rowCount() > 0) {
-            $user = $result->fetch(PDO::FETCH_ASSOC);
-            if ($user['Status'] == 'Confirmé') {
-                if (password_verify($mdp, $user['Mdp'])) {
-                    $_SESSION['IdCurrentUser'] = $user['Id'];
-                    header("Location: captcha.html");
-                    exit();
+            if ($stmt->rowCount() > 0) {
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($user['Status'] == 'Confirmé') {
+                    if (password_verify($mdp, $user['Mdp'])) {
+                        $_SESSION['IdCurrentUser'] = $user['Id'];
+                        $_SESSION['Nom'] = $user['Nom'];
+                        $_SESSION['Prenom'] = $user['Prenom'];
+                        $_SESSION['Mail'] = $user['Mail'];
+                        header("Location: captcha.html");
+                        exit();
+                    } else {
+                        echo "<script>alert('Mot de passe incorrect.');</script>";
+                    }
                 } else {
-                    die("Mot de passe incorrect.");
+                    echo '<script>alert("Un admin doit approuver votre demande pour que vous puissiez vous connecter");</script>';
                 }
             } else {
-                echo '<script>alert("Un admin doit approuver votre demande pour que vous puissiez vous connecter")</script>';
+                echo "<script>alert('Utilisateur non trouvé.');</script>";
             }
-        } else {
-            die("Utilisateur non trouvé.");
         }
     }
 }
 $conn = null;
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Connexion</title>
     <link rel="stylesheet" href="interface.css">
     <link rel="stylesheet" href="user.css">
     <script src="fonctions_communes.js"></script>
@@ -80,7 +86,8 @@ $conn = null;
                 </table>
                 <br>
                 <input type="submit" name="connexion" value="Connexion" class="connect">
-            </form><br></div>
-    </main> 
+            </form><br>
+        </div>
+    </main>
 </body>
 </html>

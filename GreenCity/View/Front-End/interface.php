@@ -2,11 +2,11 @@
 session_start();
 require "../../config_db.php";
 
-
+$database = new Database();
+$conn = $database->getConnection();
 
 $IdCurrentUser = $_SESSION['IdCurrentUser'] ?? null;
 $userInfo = null;
-
 
 if (isset($IdCurrentUser)) {
     try {
@@ -38,7 +38,7 @@ if (isset($_POST['deconnexion'])) {
         <nav>
             <a href="#">Home</a>
             <a href="./event/events.php">Events</a>
-            <a href="#">Forum</a>
+            <a href="forum.php">Forum</a>
             <a href="#">Challenges</a>
             <a href="./map/map.php">Map</a>
             <?php

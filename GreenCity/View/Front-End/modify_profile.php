@@ -2,6 +2,9 @@
 session_start();
 require "../../config_db.php";
 
+$database = new Database();
+$conn = $database->getConnection();
+
 $IdCurrentUser = $_SESSION['IdCurrentUser'] ?? null;
 $userInfo = null;
 
@@ -78,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <nav>
             <a href="interface.php">Home</a>
             <a href="./event/events.php">Events</a>
-            <a href="#">Forum</a>
+            <a href="forum.php">Forum</a>
             <a href="#">Challenges</a>
             <a href="./map/map.php">Map</a>
             <?php if ($userInfo['Role'] == 'Admin') echo '<a href="../Back-End/dashboard.php">Dashboard</a>'; ?>

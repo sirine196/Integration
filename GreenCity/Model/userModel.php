@@ -1,5 +1,8 @@
 <?php
-require "../../config_db.php";
+require_once __DIR__ . '/../config_db.php';
+
+$database = new Database();
+$conn = $database->getConnection();
 
 function getAllUsers($conn) {
     return $conn->query("SELECT Id, Nom, Prenom, Mail, Role, Status FROM user")->fetchAll(PDO::FETCH_ASSOC);

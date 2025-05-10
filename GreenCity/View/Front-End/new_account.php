@@ -1,6 +1,9 @@
 <?php
 require "../../config_db.php";
 
+$database = new Database();
+$conn = $database->getConnection();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!isset($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['mdp'])) {
         die("Tous les champs sont requis.");
