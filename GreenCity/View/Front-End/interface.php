@@ -2,6 +2,8 @@
 session_start();
 require "../../config_db.php";
 
+
+
 $IdCurrentUser = $_SESSION['IdCurrentUser'] ?? null;
 $userInfo = null;
 
